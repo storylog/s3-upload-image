@@ -6,16 +6,17 @@
   "author": "Chutiphon.k <chutiphon.k@ku.th>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./build/main.js",
-    "dev": "backpack dev",
-    "build": "backpack build",
-    "install": "yarn run build",
-    "lint": "eslint ."
+    "start": "nodemon --exec NODE_ENV=development babel-node src/index.js",
+    "build": "babel src -d dist --plugins transform-es2015-modules-commonjs",
+    "lint": "eslint .",
+    "pretest": "yarn run lint"
   },
   "dependencies": {
     "aws-sdk": "^2.95.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "backpack-core": "^0.4.2",
+    "nodemon": "^1.11.0",
     "sharp": "^0.18.2"
   },
   "devDependencies": {
