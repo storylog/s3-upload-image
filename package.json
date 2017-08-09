@@ -9,7 +9,8 @@
     "start": "nodemon --exec NODE_ENV=development babel-node src/index.js",
     "build": "babel src -d dist --plugins transform-es2015-modules-commonjs",
     "lint": "eslint .",
-    "pretest": "yarn run lint"
+    "pretest": "yarn run lint",
+    "install": "yarn run build"
   },
   "dependencies": {
     "aws-sdk": "^2.95.0",
