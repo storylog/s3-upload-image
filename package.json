@@ -9,6 +9,7 @@
     "start": "node ./build/main.js",
     "dev": "backpack dev",
     "build": "backpack build",
+    "install": "yarn run build",
     "postinstall": "backpack build",
     "lint": "eslint ."
   },
