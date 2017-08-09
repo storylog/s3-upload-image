@@ -1,0 +1,25 @@
+{
+  "name": "s3-upload-image",
+  "version": "1.0.0",
+  "main": "build/main.js",
+  "repository": "https://chutiphon-k@github.com/storylog/s3-upload-image.git",
+  "author": "Chutiphon.k <chutiphon.k@ku.th>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./build/main.js",
+    "dev": "backpack dev",
+    "build": "backpack build",
+    "postinstall": "backpack build",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "aws-sdk": "^2.95.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "backpack-core": "^0.4.2",
+    "sharp": "^0.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.4.1",
+    "eslint-config-storylog": "https://github.com/storylog/eslint-config-storylog.git"
+  }
+}
