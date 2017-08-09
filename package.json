@@ -1,7 +1,7 @@
 {
   "name": "s3-upload-image",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "repository": "https://chutiphon-k@github.com/storylog/s3-upload-image.git",
   "author": "Chutiphon.k <chutiphon.k@ku.th>",
   "license": "MIT",
