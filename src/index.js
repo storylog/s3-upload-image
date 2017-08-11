@@ -5,7 +5,7 @@ import randomstring from 'randomstring';
 let s3 = null;
 
 const ResizeImage = async (buffer) => {
-  const newBuffer = await sharp(buffer.data).rotate().resize(100).toBuffer();
+  const newBuffer = await sharp(buffer.data).toBuffer();
   return newBuffer;
 };
 
