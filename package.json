@@ -1,23 +1,21 @@
 {
   "name": "s3-upload-image",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "build/main.js",
   "repository": "https://chutiphon-k@github.com/storylog/s3-upload-image.git",
   "author": "Chutiphon.k <chutiphon.k@ku.th>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec NODE_ENV=development babel-node src/index.js",
-    "build": "babel src -d dist --plugins transform-es2015-modules-commonjs",
-    "lint": "eslint .",
-    "pretest": "yarn run lint",
-    "install": "yarn run build"
+    "start": "node ./build/main.js",
+    "dev": "backpack dev",
+    "build": "backpack build",
+    "postinstall": "backpack build"
   },
   "dependencies": {
     "aws-sdk": "^2.95.0",
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "nodemon": "^1.11.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "backpack-core": "^0.4.2",
     "randomstring": "^1.1.5",
     "sharp": "^0.18.2"
   },
