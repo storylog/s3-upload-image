@@ -8,14 +8,15 @@
   "scripts": {
     "start": "node ./build/main.js",
     "dev": "backpack dev",
-    "build": "backpack build",
-    "postinstall": "backpack build"
+    "build": "yarn && backpack build",
+    "postinstall": "postinstall-build build"
   },
   "dependencies": {
     "aws-sdk": "^2.95.0",
     "babel-preset-stage-0": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
     "backpack-core": "^0.4.2",
+    "postinstall-build": "^5.0.1",
     "randomstring": "^1.1.5",
     "sharp": "^0.18.2"
   },
