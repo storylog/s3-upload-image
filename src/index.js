@@ -1,7 +1,13 @@
 import Aws from 'aws-sdk';
 import sharp from 'sharp';
+import randomstring from 'randomstring';
 
 let s3 = null;
+
+const ResizeImage = async (buffer) => {
+  const newBuffer = await sharp(buffer.data).rotate().resize(100).toBuffer();
+  return newBuffer;
+};
 
 const decodeBase64Image = (dataString) => {
   /* eslint-disable no-useless-escape */
@@ -13,7 +19,7 @@ const decodeBase64Image = (dataString) => {
     throw new Error('Invalid input string');
   }
 
-  if (!/image\/(png|jp?g)/.test(matches[1])) {
+  if (!/image\/(png|jpg|jpeg)/.test(matches[1])) {
     throw new Error('Type is not support');
   }
 
@@ -28,13 +34,13 @@ const init = (config) => {
   s3 = new Aws.S3(config);
 };
 
-const uploadImage = async (data, filename, destination) => {
+const uploadImage = async (data, destination) => {
   const imageBuffer = decodeBase64Image(data);
-  const bufferImageResize = await sharp(imageBuffer.data).rotate().resize(100).toBuffer();
+  const bufferImageResize = await ResizeImage(imageBuffer);
 
   const params = {
     Bucket: destination,
-    Key: `${filename || Math.floor(Math.random() * 100000)}.${imageBuffer.type.split('/')[1]}`,
+    Key: randomstring.generate(15),
     Body: bufferImageResize,
   };
   const infoUpload = await s3.upload(params).promise();
