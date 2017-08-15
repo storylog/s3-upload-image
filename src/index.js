@@ -35,7 +35,7 @@ const init = (config) => {
 };
 
 const uploadImage = async (data, destination) => {
-  console.log(s3.config)
+  console.log(s3.config);
   const imageBuffer = decodeBase64Image(data);
   const bufferImageResize = await ResizeImage(imageBuffer);
 
