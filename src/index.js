@@ -30,11 +30,12 @@ const decodeBase64Image = (dataString) => {
 };
 
 const init = (config) => {
-  if (!config) throw new Error('Please input config S3');
+  // if (!config) throw new Error('Please input config S3');
   s3 = new Aws.S3(config);
 };
 
 const uploadImage = async (data, destination) => {
+  console.log(s3.config)
   const imageBuffer = decodeBase64Image(data);
   const bufferImageResize = await ResizeImage(imageBuffer);
 
@@ -43,8 +44,12 @@ const uploadImage = async (data, destination) => {
     Key: randomstring.generate(15),
     Body: bufferImageResize,
   };
-  const infoUpload = await s3.upload(params).promise();
-  return infoUpload.Location;
+  try {
+    const infoUpload = await s3.upload(params).promise();
+    return infoUpload.Location;
+  } catch (error) {
+    throw new Error('Cannot upload image');
+  }
 };
 
 export default {
