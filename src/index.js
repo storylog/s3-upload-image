@@ -30,12 +30,12 @@ const decodeBase64Image = (dataString) => {
 };
 
 const init = (config) => {
-  // if (!config) throw new Error('Please input config S3');
   s3 = new Aws.S3(config);
 };
 
 const uploadImage = async (data, destination) => {
-  console.log(s3.config);
+  if (!s3.config) throw new Error('Please input config S3');
+
   const imageBuffer = decodeBase64Image(data);
   const bufferImageResize = await ResizeImage(imageBuffer);
 
